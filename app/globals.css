@@ -1,0 +1,153 @@
+:root, [data-theme="light"] {
+  color-scheme: light;
+  --bg: #f4f1eb;
+  --text: #1c1916;
+  --muted: #5c564c;
+  --card: #fff;
+  --line: #ddd4c8;
+  --line-strong: #e6dfd4;
+  --accent: #0f3d36;
+  --accent-soft: #e7f3ef;
+  --ok-bg: #e5f4ea;
+  --ok-line: #b7dec4;
+  --err: #8d2d24;
+  --header: #143f38;
+  --header-text: #fff;
+  --link: #0f3d36;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #141311;
+  --text: #f4efe6;
+  --muted: #c4bdb2;
+  --card: #221f1b;
+  --line: #3d3832;
+  --line-strong: #3d3832;
+  --accent: #8fcec0;
+  --accent-soft: #1c3330;
+  --ok-bg: #173328;
+  --ok-line: #3d7a56;
+  --err: #ffb4a8;
+  --header: #0c2421;
+  --header-text: #f4efe6;
+  --link: #9dcec2;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    color-scheme: dark;
+    --bg: #141311;
+    --text: #f4efe6;
+    --muted: #c4bdb2;
+    --card: #221f1b;
+    --line: #3d3832;
+    --line-strong: #3d3832;
+    --accent: #8fcec0;
+    --accent-soft: #1c3330;
+    --ok-bg: #173328;
+    --ok-line: #3d7a56;
+    --err: #ffb4a8;
+    --header: #0c2421;
+    --header-text: #f4efe6;
+    --link: #9dcec2;
+  }
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+a { color: var(--link); }
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 14px 16px;
+  background: var(--header);
+  color: var(--header-text);
+}
+.top a { color: var(--header-text); text-decoration: none; }
+.logo { font-weight: 700; }
+.top-actions { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+nav { display: flex; gap: 14px; }
+.theme-switch { display: flex; align-items: center; gap: 8px; }
+.theme-label { font-size: 0.85rem; }
+.theme-switch div {
+  display: flex;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.theme-switch button {
+  background: transparent;
+  color: var(--header-text);
+  border: 0;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+.theme-switch button[aria-pressed="true"] {
+  background: #fff;
+  color: #143f38;
+}
+main { max-width: 920px; margin: 0 auto; padding: 16px; }
+h1 { font-size: 1.7rem; margin: 0 0 8px; }
+h2 { font-size: 1.05rem; margin: 18px 0 8px; }
+h3 { font-size: 0.95rem; }
+.lead { margin-top: 0; color: var(--muted); }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 8px; }
+.opt, button, input { font: inherit; }
+.opt {
+  text-align: left;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: var(--card);
+  color: var(--text);
+  cursor: pointer;
+}
+.opt.active { border-color: var(--accent); background: var(--accent-soft); }
+.opt:disabled { cursor: not-allowed; opacity: 0.55; text-decoration: line-through; }
+label { display: block; font-size: 0.92rem; }
+input {
+  width: 100%;
+  padding: 10px;
+  margin: 4px 0 10px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--card);
+  color: var(--text);
+}
+.row { display: grid; grid-template-columns: 1fr 1fr 1fr auto; gap: 8px; align-items: end; }
+.submit, .add {
+  background: #0f3d36;
+  color: #fff;
+  border: 0;
+  border-radius: 10px;
+  padding: 12px 14px;
+  cursor: pointer;
+}
+.ok { background: var(--ok-bg); border: 1px solid var(--ok-line); color: var(--text); padding: 12px; border-radius: 12px; }
+.err { color: var(--err); }
+.history, .bookings { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+.history li, .bookings li {
+  background: var(--card);
+  border: 1px solid var(--line-strong);
+  border-radius: 12px;
+  padding: 10px 12px;
+}
+.bookings li { display: grid; gap: 2px; }
+.bookings small { display: block; color: var(--muted); }
+.note { color: var(--muted); font-size: 0.92rem; }
+@media (max-width: 720px) {
+  .row { grid-template-columns: 1fr; }
+  h1 { font-size: 1.35rem; }
+}
+@media (min-width: 900px) {
+  .bookings li { grid-template-columns: 1.1fr 1fr 1.3fr 1.1fr 1fr 0.9fr 0.9fr; gap: 8px; align-items: center; }
+}

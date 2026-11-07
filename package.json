@@ -1,0 +1,16 @@
+{
+  "name": "nord-service",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -H 127.0.0.1 -p 3000",
+    "start": "next start -H 127.0.0.1 -p 3000",
+    "build": "next build && node scripts/migrate.mjs"
+  },
+  "dependencies": {
+    "@electric-sql/pglite": "^0.5.15",
+    "next": "^16.4.5",
+    "pg": "^8.23.1",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  }
+}
